@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7月19日 高松練成会 | 塩冶オールスターズ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --court-navy: #0b1f3a;
+    --court-navy-deep: #071527;
+    --hardwood-orange: #e8721c;
+    --line-white: #eef1f6;
+    --line-dim: #93a1bd;
+    --net-lime: #cbe86b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--court-navy-deep);
+    color: var(--line-white);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 720px; margin: 0 auto; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px 64px;
+    background: radial-gradient(120% 90% at 50% -10%, var(--court-navy) 0%, var(--court-navy-deep) 65%);
+    overflow: hidden;
+  }
+
+  .court-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    font-size: 13px;
+    color: var(--hardwood-orange);
+    text-transform: uppercase;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .headline {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 9.5vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    z-index: 1;
+    color: var(--line-white);
+    text-shadow: 0 0 40px rgba(232, 114, 28, 0.25);
+  }
+
+  .headline span {
+    display: block;
+    color: var(--hardwood-orange);
+  }
+
+  .sub {
+    z-index: 1;
+    margin-top: 22px;
+    font-size: 16px;
+    color: var(--line-dim);
+    max-width: 380px;
+  }
+
+  .meta-row {
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 7px 16px;
+    border: 1px solid rgba(238, 241, 246, 0.25);
+    border-radius: 999px;
+    color: var(--line-dim);
+  }
+
+  /* ---------- CTA (locker nameplate) ---------- */
+  .cta-group {
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--hardwood-orange);
+    color: var(--court-navy-deep);
+    text-decoration: none;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 16px 24px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(232, 114, 28, 0.28);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .cta-secondary {
+    background: transparent;
+    color: var(--line-white);
+    border: 1.5px solid rgba(238, 241, 246, 0.35);
+    box-shadow: none;
+  }
+
+  .cta-phase {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(7, 21, 39, 0.18);
+  }
+
+  .cta-secondary .cta-phase {
+    background: rgba(238, 241, 246, 0.12);
+    color: var(--line-dim);
+  }
+
+  .cta:hover, .cta:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(232, 114, 28, 0.4);
+  }
+
+  .cta-secondary:hover, .cta-secondary:focus-visible {
+    box-shadow: none;
+    border-color: var(--hardwood-orange);
+  }
+
+  .hoop {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+  }
+
+  .hoop .ball {
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  .cta:hover .hoop .ball, .cta:focus-visible .hoop .ball {
+    transform: translateY(9px) scale(0.85);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta, .hoop .ball { transition: none; }
+  }
+
+  .privacy-note {
+    z-index: 1;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--line-dim);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- INFO ---------- */
+  .info {
+    padding: 64px 24px 48px;
+  }
+
+  .info h2 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .info > p {
+    color: var(--line-dim);
+    font-size: 15px;
+    max-width: 520px;
+  }
+
+  .checkpoints {
+    margin-top: 36px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .point {
+    border: 1px solid rgba(238, 241, 246, 0.14);
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: rgba(238, 241, 246, 0.03);
+  }
+
+  .point h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--net-lime);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .point p {
+    font-size: 14.5px;
+    color: var(--line-white);
+  }
+
+  footer {
+    padding: 64px 24px 56px;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--line-dim);
+    border-top: 1px solid rgba(238, 241, 246, 0.1);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <svg class="court-lines" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice">
+      <circle cx="200" cy="400" r="90" fill="none" stroke="#eef1f6" stroke-width="1.5"/>
+      <line x1="0" y1="400" x2="400" y2="400" stroke="#eef1f6" stroke-width="1.5"/>
+      <path d="M 40 60 A 240 240 0 0 0 40 740" fill="none" stroke="#eef1f6" stroke-width="1.5"/>
+      <path d="M 360 60 A 240 240 0 0 1 360 740" fill="none" stroke="#eef1f6" stroke-width="1.5"/>
+      <circle cx="200" cy="120" r="45" fill="none" stroke="#eef1f6" stroke-width="1.5"/>
+      <circle cx="200" cy="680" r="45" fill="none" stroke="#eef1f6" stroke-width="1.5"/>
+    </svg>
+
+    <p class="eyebrow">塩冶オールスターズ</p>
+    <h1 class="headline">7月19日(日)<span>高松練成会</span></h1>
+    <p class="sub">高松戦・湖陵戦</p>
+
+    <div class="meta-row">
+      <span class="tag">試合で頑張ること</span>
+      <span class="tag">試合に向けて練習で頑張ること</span>
+      <span class="tag">試合が終わってからの振り返り</span>
+    </div>
+
+    <div class="cta-group">
+      <a class="cta" href="https://forms.gle/YtoP7BnnpQHgkUs99" target="_blank" rel="noopener">
+        <span class="cta-phase">試合前</span>
+        <span class="cta-label">頑張ることを入力</span>
+        <svg class="hoop" viewBox="0 0 40 40" fill="none">
+          <rect x="6" y="14" width="28" height="3" rx="1.5" fill="currentColor"/>
+          <path d="M8 17 Q10 28 20 28 Q30 28 32 17" stroke="currentColor" stroke-width="1.6" fill="none" opacity="0.6"/>
+          <circle class="ball" cx="20" cy="8" r="5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a class="cta cta-secondary" href="https://forms.gle/3HAQzt77AdXtcyVN7" target="_blank" rel="noopener">
+        <span class="cta-phase">試合後</span>
+        <span class="cta-label">振り返りを入力</span>
+        <svg class="hoop" viewBox="0 0 40 40" fill="none">
+          <rect x="6" y="14" width="28" height="3" rx="1.5" fill="currentColor"/>
+          <path d="M8 17 Q10 28 20 28 Q30 28 32 17" stroke="currentColor" stroke-width="1.6" fill="none" opacity="0.6"/>
+          <circle class="ball" cx="20" cy="8" r="5" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="privacy-note">※ 回答はコーチ陣のみが確認します</p>
+  </header>
+
+
+
+  <footer>
+    塩冶オールスターズ &middot; GAME DAY GOALS
+  </footer>
+
+</div>
+</body>
+</html>
